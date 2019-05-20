@@ -4,7 +4,10 @@
   "description": "redux library to persist state through IndexedDB using middleware utility",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,13 @@
   },
   "homepage": "https://github.com/RadicalRoy/middleware#readme",
   "devDependencies": {
+    "dexie": "^2.0.4",
+    "prettier": "^1.17.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
