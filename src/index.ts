@@ -1,5 +1,9 @@
 import middleware from './middleware';
 import outerReducer from './outerReducer';
+import asyncRequestIDB from './asyncRequestIDB'
 
-export const Middleware = middleware;
-export const OuterReducer = outerReducer;
+export default {
+  Middleware: middleware,
+  OuterReducer: outerReducer,
+  GetReduxieState: asyncRequestIDB
+}

@@ -12,7 +12,6 @@ const asyncRequestIDB = (dbName: string, dispatch: any) => {
       .catch(err => {
         console.log(err);
       });
-    console.log('IDB created');
   };
 };
 
