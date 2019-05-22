@@ -1,6 +1,5 @@
-import middleware from "./middleware";
+import middleware from './middleware';
+import outerReducer from './outerReducer';
 
-export default middleware;
-//const Greeter = (name: string) => `Hello ${name}`;
-
-//export const greeting = Greeter(name);
+export const Middleware = middleware;
+export const OuterReducer = outerReducer;
