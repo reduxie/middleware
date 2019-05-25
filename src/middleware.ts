@@ -9,6 +9,14 @@ const middleware = (dbName: string) => {
     // After action, cache state to IDB
     const state = getState();
     db.table('state').add(state);
+    db.table('state')
+      .count()
+      .then(count => {
+        if (count >= 20) {
+          db.table('state').clear();
+          db.table('state').add(state);
+        }
+      });
   };
 };
 

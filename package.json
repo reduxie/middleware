@@ -1,6 +1,6 @@
 {
   "name": "reduxie",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "redux library to persist state through IndexedDB using middleware utility",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,6 +30,7 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "dexie": "^2.0.4"
+    "dexie": "^2.0.4",
+    "user": "0.0.0"
   }
 }
