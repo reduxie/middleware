@@ -1,19 +1,16 @@
 import Reduxie from './Reduxie';
 
-interface IConfig {
-  throttleTime: number;
-  count: number;
-}
+// interface IConfig {
+//   throttleTime: number;
+//   count: number;
+// }
 
-const middleware = (dbName: string, config: IConfig = { throttleTime: 500, count: 20 }) => {
+const middleware = (dbName: string, throttleTime: number = 500, count: number = 20) => {
   let date: number = Date.now();
   return ({ getState }: any) => (next: any) => (action: any) => {
     next(action);
     let current: number = Date.now();
-    if (config.throttleTime === undefined || config.count === undefined) {
-      throw 'Must define throttleTime and count when using second parameter.';
-    }
-    if (current - date > config.throttleTime) {
+    if (current - date > throttleTime) {
       console.log('writing to database every 2.5 seconds');
       date = Date.now();
       // Initialize IDB database by dbName
@@ -25,7 +22,7 @@ const middleware = (dbName: string, config: IConfig = { throttleTime: 500, count
       db.table('state')
         .count()
         .then(count => {
-          if (count >= config.count) {
+          if (count >= count) {
             db.table('state')
               .clear()
               .then(() => db.table('state').add(state));
