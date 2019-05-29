@@ -1,6 +1,6 @@
 {
   "name": "reduxie",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "redux library to persist state through IndexedDB using middleware utility",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/RadicalRoy/middleware/issues"
   },
-  "homepage": "https://github.com/RadicalRoy/middleware#readme",
+  "homepage": "https://github.com/reduxie/middleware#readme",
   "devDependencies": {
     "prettier": "^1.17.1",
     "tslint": "^5.16.0",
@@ -30,7 +30,6 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "dexie": "^2.0.4",
-    "user": "0.0.0"
+    "dexie": "^2.0.4"
   }
 }
