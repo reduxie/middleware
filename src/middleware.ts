@@ -1,14 +1,37 @@
 import Reduxie from './Reduxie';
 
-const middleware = (dbName: string) => {
+export interface IParams {
+  throttleTime: number;
+  deleteCount: number;
+}
+const middleware = (dbName: string, config?: IParams) => {
+  let date: number = Date.now();
   return ({ getState }: any) => (next: any) => (action: any) => {
-    // Initialize IDB database by dbName
-    const db = new Reduxie(dbName);
-    // Continue to dispatch action
     next(action);
-    // After action, cache state to IDB
-    const state = getState();
-    db.table('state').add(state);
+    const throttleTime = config ? config.throttleTime : 500;
+    const deleteCount = config ? config.deleteCount : 20;
+    const current: number = Date.now();
+    if (current - date > throttleTime) {
+      console.log(`allowing client to write to database every ${throttleTime} milliseconds`);
+      date = Date.now();
+      // Initialize IDB database by dbName
+      const db = new Reduxie(dbName);
+      // Continue to dispatch action
+      // After action, cache state to IDB
+      const state = getState();
+      db.table('state').add(state);
+      db.table('state')
+        .count()
+        .then(count => {
+          if (count >= deleteCount) {
+            db.table('state')
+              .clear()
+              .then(() => db.table('state').add(state));
+          }
+        });
+    } else {
+      console.log('not writing to db, just wait');
+    }
   };
 };
 
