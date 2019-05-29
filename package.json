@@ -1,6 +1,6 @@
 {
   "name": "reduxie",
-  "version": "1.0.5",
+  "version": "1.2.4",
   "description": "redux library to persist state through IndexedDB using middleware utility",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
