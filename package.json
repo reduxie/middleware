@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/RadicalRoy/middleware#readme",
   "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "jest": "^24.8.0",
     "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"
