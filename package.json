@@ -22,6 +22,7 @@
   "homepage": "https://github.com/RadicalRoy/middleware#readme",
   "devDependencies": {
     "@types/jest": "^24.0.13",
+    "fake-indexeddb": "^2.1.0",
     "jest": "^24.8.0",
     "prettier": "^1.17.1",
     "ts-jest": "^24.0.2",
@@ -33,6 +34,7 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "@types/node": "^12.0.4",
     "dexie": "^2.0.4",
     "user": "0.0.0"
   }
