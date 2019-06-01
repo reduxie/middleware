@@ -7,6 +7,7 @@ const asyncRequestIDB = (dbName: string, dispatch: any) => {
     db.table('state')
       .toCollection()
       .last(rec => {
+        delete rec['reduxie_id'];
         dispatch({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: rec } });
       })
       .catch(err => {
