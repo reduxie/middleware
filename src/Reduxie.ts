@@ -10,7 +10,8 @@ export default class Reduxie extends Dexie {
   constructor(dbName: string) {
     super(dbName);
     this.version(1).stores({
-      state: '++id, snapshot',
+      //state: '++reduxie_id, snapshot',
+      state: '++reduxie_id'
     });
     this.state = this.table('state');
   }

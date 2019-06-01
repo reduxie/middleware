@@ -4,12 +4,12 @@ export interface IParams {
   throttleTime: number;
   deleteCount: number;
 }
-const middleware = (dbName: string, config?: IParams) => {
+const middleware = (dbName: string, config: IParams = {throttleTime: 500, deleteCount: 20}) => {
   let date: number = Date.now();
   return ({ getState }: any) => (next: any) => (action: any) => {
     next(action);
-    const throttleTime = config ? config.throttleTime : 500;
-    const deleteCount = config ? config.deleteCount : 20;
+    const throttleTime = config.throttleTime || 500;
+    const deleteCount = config.deleteCount || 20;
     const current: number = Date.now();
     if (current - date > throttleTime) {
       console.log(`allowing client to write to database every ${throttleTime} milliseconds`);
@@ -19,6 +19,7 @@ const middleware = (dbName: string, config?: IParams) => {
       // Continue to dispatch action
       // After action, cache state to IDB
       const state = getState();
+
       db.table('state').add(state);
       db.table('state')
         .count()
@@ -29,8 +30,6 @@ const middleware = (dbName: string, config?: IParams) => {
               .then(() => db.table('state').add(state));
           }
         });
-    } else {
-      console.log('not writing to db, just wait');
     }
   };
 };
