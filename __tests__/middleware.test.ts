@@ -58,7 +58,7 @@ describe('Testing deletion from IDB', () => {
     });
 })
 
-describe('Check getState function', () => {
+describe('Testing getState function', () => {
     beforeEach(() => {
         const db = new Reduxie('mock');
         db.open().then( () =>
@@ -74,6 +74,31 @@ describe('Check getState function', () => {
         done();
     })
 })
+
+describe('Testing next function', () => {
+    it('it should delete from IDB properly', done => {
+      const db = new Reduxie('test');
+      const create = () => {
+        const store = {
+          getState: jest.fn(() => ({})),
+          dispatch: jest.fn(),
+        };
+        const next = jest.fn();
+        const invoke = (action: any) =>
+          middleware.Middleware('test', {
+            throttleTime: 0,
+            deleteCount: 4,
+          })(store)(next)(action);
+  
+        return { store, next, invoke };
+      };
+      let { next, invoke } = create();
+      let action = { type: 'TEST' };
+      invoke(action);
+      expect(next).toHaveBeenCalledWith(action);
+      done();
+    });
+  });
 
 
 
