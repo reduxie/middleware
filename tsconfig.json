@@ -9,6 +9,6 @@
     "strict": true,
     "lib": ["dom", "es2015"]
   },
-  "include": ["src"],
+  "include": ["src", "__tests__/middleware.test.ts"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
