@@ -1,15 +1,11 @@
 import middleware from '../src/index';
 import Dexie from 'dexie';
 import Reduxie from '../src/Reduxie';
-import asyncRequestIDB from '../src/asyncRequestIDB';
-Reduxie.dependencies.IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange')
-Reduxie.dependencies.indexedDB = require('fake-indexeddb')
 
-describe('Testing outer reducer', () => {
-    it('it should return function', () => {
-        expect(middleware.OuterReducer('this can be anything')).toBeInstanceOf(Function);
-    });
-});
+Reduxie.dependencies.IDBKeyRange = require('fake-indexeddb/lib/FDBKeyRange');
+Reduxie.dependencies.indexedDB = require('fake-indexeddb');
+
+
 
 describe('Testing addition to IDB', () => {
     it('it should return IDB', (done) => {
@@ -41,7 +37,7 @@ describe('Testing deletion from IDB', () => {
         db.open()
         .then(() => {
             for(let i = 0; i < 5; i += 1) {
-                db.table('state').add({i: i}); 
+                db.table('state').add({i: i});
             }
         })
         .then(() => {
@@ -54,25 +50,8 @@ describe('Testing deletion from IDB', () => {
         .catch(err => {
             console.log(err);
         });
-    })     
+    })
     });
-})
-
-describe('Testing getState function', () => {
-    beforeEach(() => {
-        const db = new Reduxie('mock');
-        db.open().then( () =>
-        db.table('state')
-        .add({'test': 'tester1'})
-        );
-    })
-    it('asyncRequestIDB should get state', async (done) => {
-        const dispatch = jest.fn();
-        let getState = asyncRequestIDB('mock', dispatch)
-        await getState();
-        expect(dispatch).toHaveBeenCalled();
-        done();
-    })
 })
 
 describe('Testing next function', () => {
@@ -89,7 +68,7 @@ describe('Testing next function', () => {
             throttleTime: 0,
             deleteCount: 4,
           })(store)(next)(action);
-  
+
         return { store, next, invoke };
       };
       let { next, invoke } = create();
@@ -99,11 +78,3 @@ describe('Testing next function', () => {
       done();
     });
   });
-
-
-
-
-
-
-
-
