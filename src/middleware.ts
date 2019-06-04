@@ -24,11 +24,12 @@ const middleware = (dbName: string, config: IParams = {throttleTime: 500, delete
       // Initialize IDB database by dbName
       const db = new Reduxie(dbName);
       const state = getState();
-
+      console.log(state, " after getState")
       db.table('state')
         .count()
         .then(count => {
           if (count >= deleteCount) { // check if IDB storage has reached limit
+            console.log('going to clear then add');
             db.table('state')
               .clear()
               .then(() => db.table('state').add(state));
