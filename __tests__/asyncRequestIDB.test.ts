@@ -5,18 +5,20 @@ Reduxie.dependencies.indexedDB = require('fake-indexeddb')
 
 
 describe('Testing getState function', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
         const db = new Reduxie('mock');
-        db.open().then( () =>
-        db.table('state')
-        .add({'test': 'tester1'})
+        await db.open()
+        .then( () =>
+              db.table('state')
+              .add({'test': 'tester1'})
         );
     })
+
     it('asyncRequestIDB should get state', async (done) => {
         const dispatch = jest.fn();
-        let getState = asyncRequestIDB('mock', dispatch)
-        await getState();
-        expect(dispatch).toHaveBeenCalled();
+        let getReduxieState = asyncRequestIDB('mock', dispatch)
+        await getReduxieState();
+        expect(dispatch).toHaveBeenCalledWith({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: {'reduxie_id': 1, 'test': 'tester1'} } });
         done();
     })
 })
