@@ -18,7 +18,10 @@ describe('Testing getState function', () => {
         const dispatch = jest.fn();
         let getReduxieState = asyncRequestIDB('mock', dispatch)
         await getReduxieState();
-        expect(dispatch).toHaveBeenCalledWith({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: {'reduxie_id': 1, 'test': 'tester1'} } });
-        done();
+
+        setTimeout(() => {
+          expect(dispatch).toHaveBeenCalledWith({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: {'reduxie_id': 1, 'test': 'tester1'} } });
+          done();
+        }, 1000)
     })
 })
