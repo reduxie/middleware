@@ -1,7 +1,8 @@
 {
   "name": "reduxie",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "redux library to persist state through IndexedDB using middleware utility",
+  "keywords": ["react", "redux", "dexie", "indexeddb", "pwa", "offline", "typescript", "state", "persistence", "caching", "cache"],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -14,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/reduxie/middleware.git"
   },
-  "author": "roy",
+  "author": "jay, mikey, chetbaby, roy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RadicalRoy/middleware/issues"
