@@ -1,5 +1,7 @@
 # Reduxie
 ---
+[![Node version](https://img.shields.io/node/v/[reduxie].svg?style=flat)](http://nodejs.org/download/)
+
 ### Description
 Asynchronous Redux state initialization and offline caching using the [Dexie](https://github.com/dfahlander/Dexie.js/) `indexedDB` API wrapper.
 
