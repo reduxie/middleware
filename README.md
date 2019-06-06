@@ -1,7 +1,7 @@
 # Reduxie
 ---
 ### Description
-Asynchronous Redux state initialization and offline caching using the Dexie `IndexedDB` API wrapper.
+Asynchronous Redux state initialization and offline caching using the Dexie `indexedDB` API wrapper.
 
 ### Purpose
 Reduxie solves the problem of efficient state persistence for your web application. Its lightweight developer experience enhances the Redux store to automatically cache state updates without blocking the main thread. This is particularly synergistic with progressive web apps utilizing service workers for a completely offline experience.
