@@ -1,15 +1,16 @@
 import Reduxie from './Reduxie';
+import { Dispatch } from 'redux';
 
-const asyncRequestIDB = (dbName: string, dispatch: any) => {
+const asyncRequestIDB = (dbName: string, dispatch: Dispatch) => {
   return () => {
     let db = new Reduxie(dbName);
-    return db.open()
+    db.open()
     .then(() => {
-      return db.table('state')
+      db.table('state')
       .toCollection()
       .last(rec => {
         // delete rec['reduxie_id'];
-        return dispatch({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: rec } });
+        dispatch({ type: 'REDUXIE_STATE_LOADING_DONE', payload: { state: rec } });
       })
       .catch(err => {
         console.log(err);
