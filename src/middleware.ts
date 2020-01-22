@@ -1,5 +1,5 @@
 import Reduxie from './Reduxie';
-import { MiddlewareAPI, Dispatch, AnyAction } from "redux";
+import { MiddlewareAPI, Dispatch, AnyAction, Action } from "redux";
 
 export interface IParams {
   throttleTime: number;
@@ -8,7 +8,7 @@ export interface IParams {
 
 const middleware = (dbName: string, config: IParams = {throttleTime: 500, deleteCount: 20}) => {
   let date: number = Date.now();
-  return ({ getState }: MiddlewareAPI) => (next: Dispatch) => (action: AnyAction) => {
+  return ({ getState }: MiddlewareAPI<Dispatch<Action>, any>) => (next: Dispatch<Action>) => (action: Action) => {
 
     // Immediately dispatch action to middleware/reducers
     next(action);
