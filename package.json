@@ -1,6 +1,6 @@
 {
   "name": "reduxie",
-  "version": "1.2.9",
+  "version": "1.3.0",
   "description": "redux library to persist state through IndexedDB using middleware utility",
   "keywords": ["react", "redux", "dexie", "indexeddb", "pwa", "offline", "typescript", "state", "persistence", "caching", "cache"],
   "main": "lib/index.js",
