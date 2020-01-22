@@ -1,6 +1,7 @@
 import Reduxie from './Reduxie';
 import { Dispatch } from 'redux';
 
+
 const asyncRequestIDB = (dbName: string, dispatch: Dispatch) => {
   return () => {
     let db = new Reduxie(dbName);
